@@ -15,7 +15,6 @@ class RayCaster:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.quit = True
-                quit()
 
     def update(self):
         fps = str(int(self.time.get_fps()))
