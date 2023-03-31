@@ -1,7 +1,7 @@
 import pygame
 
 from settings import *
-
+from color import *
 
 class Level:
     def __init__(self, app, file, size_x, size_y):
@@ -19,10 +19,10 @@ class Level:
         self.WALLGREEN = pygame.Surface(TILE_SIZE) # 3
         self.WALLBLUE  = pygame.Surface(TILE_SIZE) # 4
 
-        self.WALL.fill((255, 255, 255))
-        self.WALLRED.fill((255, 0, 0))
-        self.WALLGREEN.fill((0, 255, 0))
-        self.WALLBLUE.fill((0, 0, 255))
+        self.WALL.fill(WHITE)
+        self.WALLRED.fill(RED)
+        self.WALLGREEN.fill(GREEN)
+        self.WALLBLUE.fill(BLUE)
 
     def init_level(self):
         rv = []
