@@ -20,10 +20,14 @@ class Level:
         self.WALLGREEN = pygame.Surface(TILE_SIZE_S) # 3
         self.WALLBLUE  = pygame.Surface(TILE_SIZE_S) # 4
 
+        self.FLOR = pygame.Surface(TILE_SIZE_S) # 0
+
         self.WALL.fill(WHITE)
         self.WALLRED.fill(RED)
         self.WALLGREEN.fill(GREEN)
         self.WALLBLUE.fill(BLUE)
+
+        self.FLOR.fill(GREAY)
 
     def init_level(self):
         rv = []
@@ -43,7 +47,9 @@ class Level:
             for x in range(self.size_x):
                 # sure there is a better way to do this...
                 # well we'll find out later
-                if self.level[y * self.size_x + x] == "1":
+                if self.level[y * self.size_x + x] == "0":
+                    self.app.window.blit(self.FLOR, (x * TILE_WIDTH, y * TILE_HEIGHT))
+                elif self.level[y * self.size_x + x] == "1":
                     self.app.window.blit(self.WALL, (x * TILE_WIDTH, y * TILE_HEIGHT))
                 elif self.level[y * self.size_x + x] == "2":
                     self.app.window.blit(self.WALLRED, (x * TILE_WIDTH, y * TILE_HEIGHT))
