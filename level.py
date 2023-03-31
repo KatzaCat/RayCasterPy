@@ -14,10 +14,10 @@ class Level:
         self.size_y = size_y
 
         # blocks
-        self.WALL      = pygame.Surface(TILE_SIZE) # 1
-        self.WALLRED   = pygame.Surface(TILE_SIZE) # 2
-        self.WALLGREEN = pygame.Surface(TILE_SIZE) # 3
-        self.WALLBLUE  = pygame.Surface(TILE_SIZE) # 4
+        self.WALL      = pygame.Surface(TILE_SIZE_S) # 1
+        self.WALLRED   = pygame.Surface(TILE_SIZE_S) # 2
+        self.WALLGREEN = pygame.Surface(TILE_SIZE_S) # 3
+        self.WALLBLUE  = pygame.Surface(TILE_SIZE_S) # 4
 
         self.WALL.fill(WHITE)
         self.WALLRED.fill(RED)
