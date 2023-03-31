@@ -42,7 +42,7 @@ class Level:
         for y in range(self.size_y):
             for x in range(self.size_x):
                 # sure there is a better way to do this...
-                # well finsdo out later
+                # well we'll find out later
                 if self.level[y * self.size_x + x] == "1":
                     self.app.window.blit(self.WALL, (x * TILE_WIDTH, y * TILE_HEIGHT))
                 elif self.level[y * self.size_x + x] == "2":
