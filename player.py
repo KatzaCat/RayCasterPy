@@ -3,19 +3,24 @@ import pygame
 from settings import *
 from color import *
 
+from ray import *
+
 class Player:
     def __init__(self, app):
         self.app = app
         
         # player info
-        self.x = 0.0
-        self.y = 0.0
+        self.x = 5 * TILE_WIDTH
+        self.y = 5 * TILE_HEIGHT
 
         # movement
         self.pressed_up    = False
         self.pressed_down  = False
         self.pressed_left  = False
         self.pressed_right = False
+
+        # ray from player
+        self.rays = Rays(app)
 
     def player_event(self, event):
         # moving around
@@ -51,3 +56,4 @@ class Player:
 
     def player_draw(self):
         pygame.draw.circle(self.app.window, PINK, (self.x, self.y), PLAYER_SIZE)
+        self.rays.rays_draw(self.x, self.y)

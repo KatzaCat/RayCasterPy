@@ -17,7 +17,6 @@ class RayCaster:
 
         self.player = Player(self)
         self.level = Level(self, "level.txt", 20, 20)
-        self.rays = Rays(self)
 
     def event(self):
         for event in pygame.event.get():
@@ -32,9 +31,8 @@ class RayCaster:
 
     def draw(self):
         self.window.fill(WINDOW_BACKGROUND_COLOR)
-        self.rays.rays_draw(self.player.x, self.player.y)
-        self.player.player_draw()
         self.level.level_draw()
+        self.player.player_draw()
         pygame.display.flip()
 
     def update(self):
