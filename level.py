@@ -9,6 +9,7 @@ class Level:
         
         self.file = file
         
+        # level stuff
         self.level = self.init_level()
         self.size_x = size_x
         self.size_y = size_y
@@ -28,6 +29,9 @@ class Level:
         rv = []
         with open(self.file, "r") as file:
             rv = file.read()
+
+            # realize that i could just not include spaces, but 
+            # spaces make it look better whaen wrting it out
             rv = rv.replace(" ", "")
             rv = rv.replace("\n", "")
 
@@ -37,6 +41,8 @@ class Level:
         # draws map
         for y in range(self.size_y):
             for x in range(self.size_x):
+                # sure there is a better way to do this...
+                # well finsdo out later
                 if self.level[y * self.size_x + x] == "1":
                     self.app.window.blit(self.WALL, (x * TILE_WIDTH, y * TILE_HEIGHT))
                 elif self.level[y * self.size_x + x] == "2":
