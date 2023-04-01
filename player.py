@@ -26,22 +26,22 @@ class Player:
         # moving around
         # gotta be a better way to do this...
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_UP:
+            if event.key == pygame.K_w:
                 self.pressed_up = True
-            if event.key == pygame.K_DOWN:
+            if event.key == pygame.K_s:
                 self.pressed_down = True
-            if event.key == pygame.K_LEFT:
+            if event.key == pygame.K_a:
                 self.pressed_left = True
-            if event.key == pygame.K_RIGHT:
+            if event.key == pygame.K_d:
                 self.pressed_right = True
         if event.type == pygame.KEYUP:
-            if event.key == pygame.K_UP:
+            if event.key == pygame.K_w:
                 self.pressed_up = False
-            if event.key == pygame.K_DOWN:
+            if event.key == pygame.K_s:
                 self.pressed_down = False
-            if event.key == pygame.K_LEFT:
+            if event.key == pygame.K_a:
                 self.pressed_left = False
-            if event.key == pygame.K_RIGHT:
+            if event.key == pygame.K_d:
                 self.pressed_right = False
 
     def player_update(self):
