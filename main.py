@@ -4,6 +4,7 @@ from settings import *
 
 from player import Player
 from level import Level
+from ray import Rays
 
 pygame.init()
 
@@ -16,6 +17,7 @@ class RayCaster:
 
         self.player = Player(self)
         self.level = Level(self, "level.txt", 20, 20)
+        self.rays = Rays(self, 60)
 
     def event(self):
         for event in pygame.event.get():
@@ -31,6 +33,7 @@ class RayCaster:
     def draw(self):
         self.window.fill(WINDOW_BACKGROUND_COLOR)
         self.level.level_draw()
+        self.rays.rays_draw(self.player)
         self.player.player_draw()
         pygame.display.flip()
 
