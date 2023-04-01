@@ -4,7 +4,6 @@ from settings import *
 
 from player import Player
 from level import Level
-from ray import Rays
 
 pygame.init()
 
