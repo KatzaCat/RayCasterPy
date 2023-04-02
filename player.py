@@ -86,14 +86,14 @@ class Player:
             self.angle -= 0.003
             if (self.angle < 0):
                 self.angle += 2*PI
-            self.delta_x = math.cos(self.angle)
-            self.delta_y = math.sin(self.angle)
+            self.delta_x = math.cos(self.angle) * PLAYER_TURN_SPEED
+            self.delta_y = math.sin(self.angle) * PLAYER_TURN_SPEED
         if self.turn_right:
             self.angle += 0.003
             if (self.angle > 2*PI):
                 self.angle -= 2*PI
-            self.delta_x = math.cos(self.angle)
-            self.delta_y = math.sin(self.angle)
+            self.delta_x = math.cos(self.angle) * PLAYER_TURN_SPEED
+            self.delta_y = math.sin(self.angle) * PLAYER_TURN_SPEED
 
     def player_draw(self):
         pygame.draw.circle(self.app.window, PINK, (self.x, self.y), PLAYER_SIZE)

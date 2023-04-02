@@ -16,8 +16,8 @@ class RayCaster:
         self.time = pygame.time.Clock()
 
         self.player = Player(self)
-        self.level = Level(self, "level.txt", 20, 20)
-        self.rays = Rays(self, 60)
+        self.level = Level(self, "level.txt", 20, 40)
+        self.rays = Rays(self, 100)
 
     def event(self):
         for event in pygame.event.get():

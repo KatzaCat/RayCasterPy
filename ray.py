@@ -26,12 +26,16 @@ class Rays:
         self.map_x = 0
         self.map_y = 0
         self.map_pos = 0
+        self.v_map_value = ""
+        self.h_map_value = ""
+
+        self.color = 0
 
     def get_distance(self, ax, ay, bx, by, anges):
         return (math.sqrt((bx - ax) * (bx - ax) + (by - ay) * (by - ay)))
 
     def rays_draw(self, player):
-        self.angle = player.angle - DAGREE * 30
+        self.angle = player.angle - DAGREE * 25
         if self.angle < 0:
             self.angle += 2*PI
         if self.angle > 2*PI:
@@ -65,6 +69,7 @@ class Rays:
                 self.map_y = int(self.y) // self.app.level.size
                 self.map_pos = self.map_y * self.app.level.size_x + self.map_x
                 if self.map_pos > 0 and self.map_pos < self.app.level.size_x * self.app.level.size_y and self.app.level.level[self.map_pos] != ".":
+                    self.h_map_value = self.app.level.level[self.map_pos]
                     hx = self.x
                     hy = self.y
                     h_max_distance = self.get_distance(player.x, player.y, hx, hy, self.angle)
@@ -100,6 +105,7 @@ class Rays:
                 self.map_y = int(self.y) // self.app.level.size
                 self.map_pos = self.map_y * self.app.level.size_x + self.map_x
                 if self.map_pos > 0 and self.map_pos < self.app.level.size_x * self.app.level.size_y and self.app.level.level[self.map_pos] != ".":
+                    self.v_map_value = self.app.level.level[self.map_pos]
                     vx = self.x
                     vy = self.y
                     v_max_distance = self.get_distance(player.x, player.y, vx, vy, self.angle)
@@ -113,23 +119,46 @@ class Rays:
                 self.x = vx
                 self.y = vy
                 self.distance = v_max_distance
+                if self.v_map_value == "w":
+                    self.color = WHITE
+                if self.v_map_value == "r":
+                    self.color = RED
+                if self.v_map_value == "g":
+                    self.color = GREEN
+                if self.v_map_value == "b":
+                    self.color = BLUE
             else:
                 self.x = hx
                 self.y = hy
                 self.distance = h_max_distance
+                if self.h_map_value == "w":
+                    self.color = WHITE
+                if self.h_map_value == "r":
+                    self.color = RED
+                if self.h_map_value == "g":
+                    self.color = GREEN
+                if self.h_map_value == "b":
+                    self.color = BLUE
 
             pygame.draw.line(self.app.window, YELLOW, (player.x, player.y), (self.x, self.y), 3)
 
             # 3d walls
+            cos_angle = player.angle - self.angle
+            if cos_angle < 0:
+                cos_angle += 2*PI
+            if cos_angle > 2*PI:
+                cos_angle -= 2*PI
+            self.distance = self.distance * math.cos(cos_angle)
+
             lineh = (TILE_HEIGHT * 360) / self.distance
             if lineh > 360:
                 lineh = 360
 
             lineo = 360 - lineh/2
 
-            pygame.draw.line(self.app.window, WHITE, (index * 15 + 200, lineo), (index * 15 + 200, lineh + lineo), 20)
+            pygame.draw.line(self.app.window, self.color, (index * 8 + 210, lineo), (index * 8 + 210, lineh + lineo), 8)
 
-            self.angle += DAGREE
+            self.angle += DAGREE/2
             if self.angle < 0:
                 self.angle += 2*PI
             if self.angle > 2*PI:
